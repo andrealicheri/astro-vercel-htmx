@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "astro-vercel-htmx",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^5.1.0",
+    "@picocss/pico": "^1.5.10",
     "astro": "^3.4.0"
   }
 }

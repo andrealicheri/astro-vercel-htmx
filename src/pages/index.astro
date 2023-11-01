@@ -1,7 +1,17 @@
 ---
-import Page from '../layouts/layout.astro';
+import Page from '@layouts/layout.astro';
+
 ---
 
 <Page title="Hello, world!">
-	<h1 hx-on="click" hx-get="/function" hx-swap="outerHTML">Astro</h1>
+	<div style="display: flex; text-align: center; justify-content: center;">
+		<button hx-trigger="click" hx-get="/functions/random" hx-target="#random"
+		style="width: 30%">Get a random number...</button>
+	</div>
+	<p hx-trigger="load" hx-get="/functions/random" id="random" style="text-align: center;"></p>
+	<p style="text-align: center;">
+		HTMX + Astro: fast, responsive and SEO friendly, <br /> 
+		Host it for free on Vercel! <br />
+		<a href="/route">and plus...</a>
+	</p>
 </Page>

@@ -1,4 +1,6 @@
 ---
+import "@picocss/pico/css/pico.min.css";
+import { ViewTransitions, fade } from "astro:transitions";
 export interface Props {
   title: string;
 }
@@ -6,7 +8,7 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,15 +16,25 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
-    <main class="p-4 ml-auto mr-auto flex flex-col">
+    <main transition:animate={fade({ duration: "0.2s" })}>
       <slot />
     </main>
+    
+    <!-- HTMX 1.9.2 -->
     <script
+      is:inline
       src="https://unpkg.com/htmx.org@1.9.2"
       integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
+
+    <!-- Fix from https://flaviocopes.com/htmx-and-astro-view-transitions/ to make HTMX work with View Transitions -->
+    <script is:inline>
+      document.addEventListener("astro:after-swap", () => {
+        htmx.process(document.body);
+      });
+    </script>
   </body>
 </html>
