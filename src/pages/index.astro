@@ -1,9 +1,18 @@
 ---
 import Page from '@layouts/layout.astro';
-
 ---
 
 <Page title="Hello, world!">
+    <div style="display: flex; padding: 10px;">
+        <p style="flex:1.5"></p>
+        <img loading="lazy" alt="vercel" style="flex: 1; filter: invert(1)" class="showcase_image vercel"
+            src="https://www.svgrepo.com/show/327408/logo-vercel.svg" width="30vh" height="auto" />
+        <img loading="lazy" alt="plus" style="flex: 1; filter: invert(1)" width="30vh"
+            src="https://www.svgrepo.com/show/353240/plus.svg" />
+        <img loading="lazy" alt="python" style="flex: 1; " class="showcase_image python" width="30vh"
+            src="/favicon.svg" />
+        <p style="flex:1.5"></p>
+    </div>
 	<div style="display: flex; text-align: center; justify-content: center;">
 		<button hx-trigger="click" hx-get="/functions/random" hx-target="#random"
 		style="width: 30%">Get a random number...</button>
@@ -14,4 +23,4 @@ import Page from '@layouts/layout.astro';
 		Host it for free on Vercel! <br />
 		<a href="/route">and plus...</a>
 	</p>
-</Page>
+</Page> 
